@@ -15,6 +15,12 @@
     background: var(--primary);
 }
 
+.primary svg,
+.ghost:hover svg
+ {
+    fill: var(--white);
+}
+
 .primary:hover {
     background: var(--primary-hover);
 }
@@ -28,4 +34,14 @@
 .ghost:hover {
     background: var(--primary);
     color: white;
+}
+
+.arrow {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.down {
+    transform: rotate(90deg);
+    transition: all 0.2s;
 }

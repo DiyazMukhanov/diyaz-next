@@ -4,12 +4,13 @@ import { Htag } from "../components/Htag/Htag"
 
 
 
+
 function HomePage(): JSX.Element {
   return (
   <>
 <Htag tag='h3'>Some Text</Htag>
-<Button appearance="primary">Click me</Button>
-<Button appearance="ghost">Click me</Button>
+<Button appearance="primary" arrow="down">Click me</Button>
+<Button appearance="ghost" arrow="right">Click me</Button>
   </>
   )
 }
