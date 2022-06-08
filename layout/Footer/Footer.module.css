@@ -1,0 +1,41 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 40px;
+    /* grid-template-areas: 
+    "rights agreement politics"; */
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    /* padding-right: 40px; */
+    background: var(--primary);
+    color: var(--white);
+}
+
+
+
+@media (max-width: 765px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    /* grid-template-areas: 
+    "rights" 
+    "agreement" 
+    "politics";
+  } */
+}
+
+  .rights {
+    text-align: center;
+}
+
+/* .agreement {
+    text-align: center;
+}
+
+.politics {
+    text-align: center;
+} */
+
+}
