@@ -5,13 +5,18 @@ import { Rating } from "../components/Rating/Rating"
 import { Tag } from "../components/Tag/Tag"
 import { Typography } from "../components/Typography/Typography"
 import { withLayout } from "../layout/Layout/Layout"
+import axios from 'axios'
+import { GetStaticProps } from 'next'
+import { MenuItem } from "../interfaces/menu.interface"
 
 
 
 
 
-function HomePage(): JSX.Element {
+
+function HomePage({menu}): JSX.Element {
   const [rating, setRating] = useState<number>(4);
+  console.log(menu);
   return (
   <>
       <Htag tag='h1'>Заголовок</Htag>
@@ -22,8 +27,49 @@ function HomePage(): JSX.Element {
       <Tag size = 'small' color="green">Green</Tag>
       <Tag size = 'small' color="red">Red</Tag>
       <Rating rating={rating} isEditable={true} setRating={setRating}/>
+      <ul>
+      {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
+      </ul>
+      
   </>
   )
 }
 
 export default withLayout(HomePage)
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+  const { data: menu } = await axios.post<MenuItem[]>('https://courses-top.ru/api/top-page/find', {
+    firstCategory
+  });
+
+    return {
+      props: {
+           menu,
+           firstCategory
+      }
+    };
+};
+
+interface HomeProps extends Record<string, unknown> {
+    menu: MenuItem[];
+    firstCategory: number;
+}
+
+// export const getStaticProps = async () => {
+//     const firstCategory = 0;
+//     const res = await fetch('https://courses-top.ru/api/top-page/find', {
+//       method: 'POST',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: firstCategory
+//     });
+//      const data = await res.json();
+     
+//      return {
+//        props: { data: data}
+//      }
+
+// }
