@@ -12,9 +12,7 @@ import { MenuItem } from "../interfaces/menu.interface"
 
 
 
-
-
-function HomePage({menu}): JSX.Element {
+function HomePage({menu, firstCategory}): JSX.Element {
   const [rating, setRating] = useState<number>(4);
   console.log(menu);
   return (
@@ -27,9 +25,7 @@ function HomePage({menu}): JSX.Element {
       <Tag size = 'small' color="green">Green</Tag>
       <Tag size = 'small' color="red">Red</Tag>
       <Rating rating={rating} isEditable={true} setRating={setRating}/>
-      <ul>
-      {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
-      </ul>
+     
       
   </>
   )
@@ -56,20 +52,4 @@ interface HomeProps extends Record<string, unknown> {
     firstCategory: number;
 }
 
-// export const getStaticProps = async () => {
-//     const firstCategory = 0;
-//     const res = await fetch('https://courses-top.ru/api/top-page/find', {
-//       method: 'POST',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       body: firstCategory
-//     });
-//      const data = await res.json();
-     
-//      return {
-//        props: { data: data}
-//      }
 
-// }
